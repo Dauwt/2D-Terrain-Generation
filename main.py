@@ -15,8 +15,8 @@ window.fill(background_color)
 white = (255, 255, 255)
 black = (0, 0, 0)
 
-grid_columns = (1800, 1000)
-pixel_size = (5, 5)
+grid_columns = (1800, 1000) # The size of the map
+pixel_size = (5, 5)         # You can modifie this variable to see more terrain
 
 pixels_info = []
 
@@ -24,7 +24,7 @@ terrain_noise_map = None
 temperature_noise_map = None
 humidity_noise_map = None
 
-seed = 275692 #334806
+seed = 275692  # Starting Seed
 seed_terrain = 0
 seed_temperature = 0
 seed_humidity = 0
@@ -44,10 +44,6 @@ def update_grid():
     for pixel in pixels_info:
         pygame.draw.rect(window, pixel["Color"], (pixel["Cords"][0], pixel["Cords"][1], pixel_size[0], pixel_size[1]))
         
-    '''for x in range(grid_columns[0] + 1):
-        pygame.draw.line(window, black, (starter_point[0] + (pixel_size[0] * x), starter_point[1]), (starter_point[0] + (pixel_size[0] * x), starter_point[1] + (grid_columns[1] * pixel_size[1])))
-    for y in range(grid_columns[1] + 1):
-        pygame.draw.line(window, black, (starter_point[0], starter_point[1] + (pixel_size[1] * y)), (starter_point[0] + (grid_columns[0] * pixel_size[0]), starter_point[1]  + (pixel_size[1] * y)))'''
         
 def treat_seed():
     global seed_terrain, seed_temperature, seed_humidity
@@ -64,16 +60,16 @@ def generate_terrain_perlin_noise_map():
     np.random.seed(seed_terrain)
     
     # Frequency and scale
-    frequency = np.random.uniform(0.5, 0.75)  # Modifica a frequência com base na seed
-    scale = np.random.uniform(50, 70) * frequency # Modifica a escala com base na seed
+    frequency = np.random.uniform(0.5, 0.75)  # Modifies the frequency based on the seed
+    scale = np.random.uniform(50, 70) * frequency # Modifies the scale based on the seed
     octaves = 4  # controls the number of detail layers
     persistence = 0.5  # controls the smoothness between layers
     lacunarity = 2.5  # controls the gap between layers
     x_offset = np.random.uniform(0, 1000)
     y_offset = np.random.uniform(0, 1000)
     
-    frequency2 = np.random.uniform(0.01, 0.1)  # Modifica a frequência com base na seed
-    scale2 = np.random.uniform(35, 65) # Modifica a escala com base na seed
+    frequency2 = np.random.uniform(0.01, 0.1)  # Modifies the frequency based on the seed
+    scale2 = np.random.uniform(35, 65) # Modifies the scale based on the seed
     octaves2 = 2  # controls the number of detail layers
     persistence2 = np.random.uniform(0.01, 0.8)  # controls the smoothness between layers
     lacunarity2 = np.random.uniform(0.01, 0.8)  # controls the gap between layers
@@ -106,9 +102,7 @@ def generate_temperature_perlin_noise():
     
     np.random.seed(seed_temperature)
     
-    # Frequency and scale
-    #frequency = np.random.uniform(0.04, 0.06)  # frequência do noise
-    scale = np.random.uniform(30, 50)  # escala do noise
+    scale = np.random.uniform(30, 50)
     octaves = 2
     persistence = np.random.uniform(0.01, 0.2)
     lacunarity = np.random.uniform(0.01, 0.2)
