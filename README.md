@@ -45,4 +45,6 @@ If you want to make **more features** to this code I recommend trying to **make 
 
 #### Notice That You Can Change Different Variables Of The Perlin Noise Alghorithm To Get Different Results!  
 
-### **Made by Dauwt©**
+### **Made by Dauwt**
+
+###Copyright (c) 2024 Dauwt
